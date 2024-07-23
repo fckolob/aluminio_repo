@@ -7,6 +7,46 @@ const botonAtrasBatiente = document.querySelector("#atras-batiente");
 const botonesCorrediza = document.querySelectorAll(".corrediza");
 const botonesBatiente = document.querySelectorAll(".batiente");
 
+class Abertura{
+    ancho;
+    alto;
+    anchoDeMarco;
+    altoDeMarco;
+    constructor(ancho, alto){
+        this.ancho = ancho;
+        this.alto = alto;
+    }
+    hacerDescuentos(){
+        this.anchoDeMarco = this.ancho;
+        this.altoDeMarco = this.alto;
+    }
+}
+
+class Batiente extends Abertura{
+    mano;
+    marcoPerimetral;
+    dobleBatiente;
+    cantidadAnchosDeMarco;
+    constructor(ancho, alto, mano, dobleBatiente, marcoPrimetral){
+        super.ancho = ancho;
+        super.alto = alto;
+        this.mano = mano;
+        this.marcoPerimetral = marcoPrimetral;
+        this.dobleBatiente = dobleBatiente;
+    }
+
+    hacerDescuentos(){
+
+        super.hacerDescuentos();
+
+        if (dobleBatiente === true){
+            this.cantidadAnchosDeMarco = 2;
+        }
+        else{
+            this.cantidadAnchosDeMarco = 1;
+        }
+    }
+}
 
 
 botonesCorrediza.forEach(boton => {
